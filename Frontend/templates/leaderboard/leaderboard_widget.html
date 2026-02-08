@@ -1,0 +1,22 @@
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/leaderboard.css') }}">
+{% endblock %}
+
+<div class="leaderboard">
+    <h2>Chore Leaderboard</h2>
+    <h3>Who's coming through for Team Manning?</h3>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Points</th>
+        </tr>
+        {% for entry in leaderboard %}
+        <tr>
+            <td>{{ entry.rank }}</td>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.points }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

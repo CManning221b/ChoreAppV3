@@ -1,0 +1,195 @@
+.my-chores-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.chores-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chores-header h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.chores-count {
+    color: #999;
+    font-size: 16px;
+}
+
+.chores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chore-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chore-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.chore-card.completed {
+    background: #f5f5f5;
+    border-color: #ccc;
+    opacity: 0.7;
+}
+
+.chore-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.chore-header h3 {
+    color: #333;
+    margin: 0;
+    font-size: 18px;
+    flex: 1;
+}
+
+.difficulty {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.difficulty-1 {
+    background: #d4edda;
+    color: #155724;
+}
+
+.difficulty-2 {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.difficulty-3 {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.chore-details {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.chore-details p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.location {
+    color: #667eea;
+    font-weight: 500;
+}
+
+.due-date {
+    color: #999;
+}
+
+.chore-points {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.points-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.points-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.chore-form {
+    margin: 0;
+}
+
+.btn-complete {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-complete:hover {
+    background: #5568d3;
+}
+
+.status-complete {
+    padding: 12px;
+    text-align: center;
+    color: #28a745;
+    font-weight: 600;
+    background: #d4edda;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.no-chores {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.no-chores i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.no-chores p {
+    font-size: 18px;
+}
+
+.chore-card.overdue {
+    background: #fff3cd;
+    border-color: #ffc107;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+}
+
+.chore-card.overdue:hover {
+    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.4);
+}

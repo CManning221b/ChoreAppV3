@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/myChores.css') }}">
+{% endblock %}
+{% block title %}My Chores{% endblock %}
+
+{% block content %}
+<div class="my-chores-container">
+    <div class="chores-header">
+        <h1>My Chores</h1>
+        <p class="chores-count">{{ chores|length }} chore{{ 's' if chores|length != 1 else '' }} assigned</p>
+    </div>
+
+    {% if chores %}
+        <div class="chores-grid">
+            {% for chore in chores %}
+            <div class="chore-card {% if chore.status == 'complete' %}completed{% elif chore.status == 'overdue' %}overdue{% endif %}">
+                <div class="chore-header">
+                    <h3>{{ chore.label }}</h3>
+                    <span class="difficulty difficulty-{{ chore.difficulty }}">
+                        {{ chore.difficulty }}
+                    </span>
+                </div>
+
+                <div class="chore-details">
+                    <p class="location">
+                        <i class="fas fa-map-marker-alt"></i> {{ chore.location }}
+                    </p>
+                    <p class="due-date {% if chore.status == 'overdue' %}overdue-date{% endif %}">
+                        <i class="fas fa-calendar"></i> Due: {{ chore.due_date }}
+                    </p>
+                </div>
+
+                <div class="chore-points">
+                    <span class="points-label">Points:</span>
+                    <span class="points-value">+{{ chore.difficulty * 10 }}</span>
+                </div>
+
+                {% if chore.status == 'pending' %}
+                <form method="POST" action="{{ url_for('user_chores.mark_chore_complete', instance_id=chore.instance_id) }}" class="chore-form">
+                    <button type="submit" class="btn-complete">
+                        <i class="fas fa-check"></i> Mark Complete
+                    </button>
+                </form>
+                {% elif chore.status == 'overdue' %}
+                <form method="POST" action="{{ url_for('user_chores.mark_chore_complete', instance_id=chore.instance_id) }}" class="chore-form">
+                    <button type="submit" class="btn-complete btn-overdue">
+                        <i class="fas fa-exclamation-triangle"></i> Overdue - Complete Now
+                    </button>
+                </form>
+                {% else %}
+                <div class="status-complete">
+                    <i class="fas fa-check-circle"></i> Completed
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-chores">
+            <i class="fas fa-tasks"></i>
+            <p>No chores assigned yet!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

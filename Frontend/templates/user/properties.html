@@ -1,0 +1,49 @@
+<!-- templates/shared/properties_list.html -->
+<div class="properties-section">
+    <h3>Properties</h3>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="boys_room" name="boys_room" {% if checked_properties and 'boys_room' in checked_properties %}checked{% endif %}>
+        <label for="boys_room">In Boys Room</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="girls_room" name="girls_room" {% if checked_properties and 'girls_room' in checked_properties %}checked{% endif %}>
+        <label for="girls_room">In Girls Room</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="sophies_room" name="sophies_room" {% if checked_properties and 'sophies_room' in checked_properties %}checked{% endif %}>
+        <label for="sophies_room">In Sophie's Room</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="is_not_parent" name="is_not_parent" {% if checked_properties and 'is_not_parent' in checked_properties %}checked{% endif %}>
+        <label for="is_not_parent">Is Not Parent</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="comfortable_with_bleach" name="comfortable_with_bleach" {% if checked_properties and 'comfortable_with_bleach' in checked_properties %}checked{% endif %}>
+        <label for="comfortable_with_bleach">Comfortable with Bleach</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="can_lift_hoover" name="can_lift_hoover" {% if checked_properties and 'can_lift_hoover' in checked_properties %}checked{% endif %}>
+        <label for="can_lift_hoover">Can Lift Hoover</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="can_walk_dog" name="can_walk_dog" {% if checked_properties and 'can_walk_dog' in checked_properties %}checked{% endif %}>
+        <label for="can_walk_dog">Can Walk Dog</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="can_drive" name="can_drive" {% if checked_properties and 'can_drive' in checked_properties %}checked{% endif %}>
+        <label for="can_drive">Can Drive</label>
+    </div>
+
+    <div class="form-group checkbox">
+        <input type="checkbox" id="over_18" name="over_18" {% if checked_properties and 'over_18' in checked_properties %}checked{% endif %}>
+        <label for="over_18">Over 18</label>
+    </div>
+</div>

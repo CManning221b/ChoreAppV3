@@ -1,0 +1,51 @@
+.dashboard-header {
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+.info-widgets {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    flex-shrink: 0;
+}
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    flex: 1;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    min-height: 500px;
+}
+
+.leaderboard table, .choresData table {
+    flex: 1;
+    overflow-y: auto;
+    display: block;
+    width: 100%;
+}
+
+.leaderboard thead, .choresData thead {
+    display: table;
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+
+.leaderboard tbody, .choresData tbody {
+    display: block;
+    width: 100%;
+}
+
+.leaderboard tr, .choresData tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}

@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+{% block title %}Manage Instances{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Chore Instance Management</h1>
+
+    <div class="instance-selector">
+        <label for="instance_select">Select an instance to edit:</label>
+        <select id="instance_select" onchange="location.href='?instance_id=' + this.value">
+            <option value="">Choose an instance...</option>
+            {% for id, inst in instances.items() %}
+                <option value="{{ id }}" {% if instance_id == id %}selected{% endif %}>
+                    {{ chores[inst.chore_id].label }} - {{ users[inst.assigned_to].name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% include 'admin/instance_form.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Manning's Chore App & Management Hub{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block additional_css %}{% endblock %}
+</head>
+<body>
+<div class="container">
+        {% include 'base/nav.html' %}
+    <div class="content">
+    {% block content %}{% endblock %}
+    </div>
+    <footer>
+      <p>CManning &copy; 2026</p>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block additional_js %}{% endblock %}
+</body>
+</html>

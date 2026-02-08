@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/widget_dashboard.css') }}">
+{% endblock %}
+{% block title %} Main Form Page {% endblock %}
+{% block content %}
+  <div class="dashboard-header">
+    <h1>Welcome to the Family Hub</h1>
+    <div class="info-widgets">
+      {% include 'calender/calender_widget.html' %}
+
+  <div class="dashboard-content">
+    {% if leaderboard %}
+      {% include 'leaderboard/leaderboard_widget.html' %}
+    {% endif %}
+    {% if chores_data %}
+      {% include 'chores/chores_widget.html' %}
+    {% endif %}
+  </div>
+          </div>
+  </div>
+
+{% endblock %}

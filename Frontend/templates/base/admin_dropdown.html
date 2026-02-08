@@ -1,0 +1,19 @@
+<!-- templates/base/admin_dropdown.html -->
+{% if session.get('is_admin') %}
+<div class="nav-dropdown">
+    <a href="#" class="dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('active')">
+        <i class="fas fa-cog"></i> Admin
+    </a>
+    <div class="dropdown-menu">
+        <a href="{{ url_for('admin.get_chores_admin') }}" class="{{ 'active' if request.endpoint == 'admin.get_chores_admin' else '' }}">
+            <i class="fas fa-tasks"></i> Manage Chores
+        </a>
+        <a href="{{ url_for('admin.get_person_details_admin') }}" class="{{ 'active' if request.endpoint == 'admin.get_person_details_admin' else '' }}">
+            <i class="fas fa-users"></i> Manage Users
+        </a>
+        <a href="{{ url_for('admin.get_chore_instance_details_admin') }}" class="{{ 'active' if request.endpoint == 'admin.get_chore_instance_details_admin' else '' }}">
+            <i class="fas fa-exchange-alt"></i> Manage Instances
+        </a>
+    </div>
+</div>
+{% endif %}

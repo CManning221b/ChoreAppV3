@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block title %} Chore List {% endblock %}
+
+{% block content %}
+{% if chores_data %}
+    {% include 'chores/chores_widget.html' %}
+{% else %}
+    <h1> Missing Chores List </h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+{% block title %}Manage Users{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>User Management</h1>
+
+    <div class="user-selector">
+        <label for="user_select">Select a user to edit:</label>
+        <select id="user_select" onchange="location.href='?user_id=' + this.value">
+            <option value="">Choose a user...</option>
+            {% for id, user in users.items() %}
+                <option value="{{ id }}" {% if user_id == id %}selected{% endif %}>{{ user.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% include 'admin/user_form.html' %}
+</div>
+{% endblock %}

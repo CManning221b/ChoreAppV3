@@ -1,0 +1,47 @@
+
+.widget {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #667eea;
+}
+
+.calendar-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 180px;
+    min-height: 180px;
+}
+
+.widget h3 {
+    margin-top: 0;
+    color: #667eea;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.widget-date {
+    font-size: 1rem;
+    color: #333;
+    margin: 0.5rem 0 0 0;
+    font-weight: 500;
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+    margin: 0.5rem 0;
+}
+
+.widget-divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 1rem 0;
+    width: 80%;
+}

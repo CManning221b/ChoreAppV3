@@ -1,0 +1,20 @@
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chores.css') }}">
+{% endblock %}
+<div class="choresData">
+    <h2>Chores Data</h2>
+    <table>
+        <tr>
+            <th>Chore</th>
+            <th>Assigned to</th>
+            <th>Status</th>
+        </tr>
+        {% for entry in chores_data %}
+        <tr>
+            <td>{{ entry.chore_name }}</td>
+            <td>{{ entry.user_name }}</td>
+            <td>{{ entry.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

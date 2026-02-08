@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+{% block title %}Manage Chores{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Chore Management</h1>
+    <div class="chore-selector">
+        <label for="chore_select">Select a chore to edit:</label>
+        <select id="chore_select" onchange="location.href='?chore_id=' + this.value">
+            <option value="">Create New Chore</option>
+            {% for id, chore in chores.items() %}
+                <option value="{{ id }}" {% if chore_id == id %}selected{% endif %}>{{ chore.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% include 'admin/chores_form.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<div class="chores-form-section">
+    <h2>{% if chore_id %}Edit Chore{% else %}Add New Chore{% endif %}</h2>
+
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('admin.update_chores_admin') }}">
+
+        <input type="hidden" id="chore_id" name="chore_id" value="{{ chore_id or '' }}">
+
+        <div class="form-group">
+            <label for="label">Chore Name</label>
+            <input type="text" id="label" name="label" value="{{ chore.label or '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dificulty">Difficulty</label>
+            <input type="number" id="dificulty" name="dificulty" value="{{ chore.difficulty or '' }}" min="1" max="10" required>
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" value="{{ chore.location or '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="recurrence_interval">Recurrence</label>
+            <select id="recurrence_interval" name="recurrence_interval" required>
+                <option value="once" {% if chore and chore.recurrence_interval.value == 'once' %}selected{% endif %}>Once</option>
+                <option value="daily" {% if chore and chore.recurrence_interval.value == 'daily' %}selected{% endif %}>Daily</option>
+                <option value="weekly" {% if chore and chore.recurrence_interval.value == 'weekly' %}selected{% endif %}>Weekly</option>
+                <option value="monthly" {% if chore and chore.recurrence_interval.value == 'monthly' %}selected{% endif %}>Monthly</option>
+            </select>
+        </div>
+
+        {% if chore %}
+            {% set checked_properties = chore.required_properties %}
+        {% else %}
+            {% set checked_properties = [] %}
+        {% endif %}
+        {% include 'user/properties.html' with context %}
+
+        <button type="submit" class="btn-primary">Save Chore</button>
+    </form>
+</div>

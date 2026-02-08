@@ -1,0 +1,19 @@
+[
+  {
+    "id": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "name": "Callum",
+    "email": "callum.manning0@gmail.com",
+    "password_hash": "scrypt:32768:8:1$20LoRl6pj8ewlwpm$cedabb1f3022087ac88d4ca653f559b29ee73f653521ece71595ea41dc7e12c270732a485ede41529c18709641eb41632eaee6bfe2602838edb6f488479f179e",
+    "properties": {
+      "boys_room": true,
+      "is_not_parent": true,
+      "comfortable_with_bleach": true,
+      "can_lift_hoover": true,
+      "can_walk_dog": true,
+      "can_drive": true,
+      "over_18": true,
+      "is_admin": true
+    },
+    "points": 0
+  }
+]

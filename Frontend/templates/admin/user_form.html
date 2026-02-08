@@ -1,0 +1,41 @@
+<!-- templates/admin/user_form.html -->
+<div class="user-form-section">
+    <h2>{% if user_id %}Edit User{% else %}Select a User{% endif %}</h2>
+
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    {% if user %}
+    <form method="POST" action="{{ url_for('admin.update_person_admin') }}">
+
+        <input type="hidden" id="user_id" name="user_id" value="{{ user_id or '' }}">
+
+        <div class="form-group">
+            <label for="name">User Name</label>
+            <input type="text" id="name" name="name" value="{{ user.name or '' }}" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ user.email or '' }}" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="points">Points</label>
+            <input type="number" id="points" name="points" value="{{ user.points or 0 }}" min="0">
+        </div>
+
+        {% if user %}
+            {% set checked_properties = user.properties.keys() %}
+        {% else %}
+            {% set checked_properties = [] %}
+        {% endif %}
+        {% include 'user/properties.html' with context %}
+
+        <button type="submit" class="btn-primary">Save User</button>
+    </form>
+    {% else %}
+    <p>Select a user from the dropdown to edit their properties.</p>
+    {% endif %}
+</div>

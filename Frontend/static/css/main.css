@@ -1,0 +1,124 @@
+/* Frontend/static/css/style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #222;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #222;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+}
+
+.container {
+    background: white;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.text-muted {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 2rem 0;
+}
+/* Phone screens */
+@media (max-width: 768px) {
+    main {
+        padding: 0 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+        margin: 1rem 0 0.75rem 0;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    main {
+        padding: 0 0.75rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}

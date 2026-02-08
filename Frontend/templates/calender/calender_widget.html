@@ -1,0 +1,13 @@
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calander.css') }}">
+{% endblock %}
+
+<div class="widget calendar-widget">
+  <h3>Today</h3>
+  <p class="widget-date">{{ today.strftime('%A, %B %d, %Y') }}</p>
+
+  <hr class="widget-divider">
+
+  <h3>Days Left</h3>
+  <p class="countdown-number">{{ days_left }}</p>
+</div>
