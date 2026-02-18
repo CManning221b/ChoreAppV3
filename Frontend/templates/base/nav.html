@@ -3,57 +3,55 @@
 {% endblock %}
 
 <nav class="main-nav">
- <div class="logo">
+    <div class="logo">
         <a href="{{ url_for('main.index') }}">
             <i class="fas fa-project-diagram"></i>
             <span class="logo-text">Chore App</span>
         </a>
     </div>
-   <div class="nav-links">
+    <div class="nav-links">
         <!-- Primary Navigation -->
         <a href="{{ url_for('main.index') }}" class="{{ 'active' if request.endpoint == 'main.index' else '' }}">
             <i class="fas fa-home"></i> Home
         </a>
-       <!-- Leaderboard Link -->
-        <a href="{{ url_for('leaderboard.get_leaderboard_rt') }}" class="{{ 'active' if request.endpoint == 'leaderboard.get_leaderboard_rt' else '' }}">
-                <i class="fas fa-trophy"></i> Leaderboard
-            </a>
-       <!-- All Chores Link -->
-        <a href="{{ url_for('chores.get_chores_rt') }}" class="{{ 'active' if request.endpoint == 'chores.get_chores_rt' else '' }}">
-            <i class="fas fa-list"></i> All Chores
-        </a>
-       <!-- My Chores Link -->
-       {% if session.get('user_id') %}
+
+        <!-- Overview Dropdown -->
+        {% include 'base/overview_dropdown.html' %}
+
+        <!-- My Chores -->
+        {% if session.get('user_id') %}
         <a href="{{ url_for('user_chores.get_my_chores') }}" class="{{ 'active' if request.endpoint == 'user_chores.get_my_chores' else '' }}">
-                <i class="fas fa-info-circle"></i> My Chores
-            </a>
-       {% endif %}
-       <!-- Admin Dropdown -->
+            <i class="fas fa-user-check"></i> My Chores
+        </a>
+        {% endif %}
+
+        <!-- Admin Dropdown -->
         {% include 'base/admin_dropdown.html' %}
+
         <!-- About Link -->
         <a href="{{ url_for('main.about') }}" class="{{ 'active' if request.endpoint == 'main.about' else '' }}">
             <i class="fas fa-info-circle"></i> About
         </a>
-       <!-- User Profile Dropdown -->
-        <div class="nav-auth">
-        {% if session.get('user_id') %}
-            <a href="{{ url_for('user_mng.profile') }}" class="user-name-link">
-                <span class="user-name">{{ session.get('user_name') }}</span>
-            </a>
-            <form method="POST" action="{{ url_for('auth.logout') }}" style="display: inline;">
-                <button type="submit" class="btn-logout">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </form>
-        {% else %}
-            <a href="{{ url_for('auth.login') }}" class="btn-login">
-                <i class="fas fa-sign-in-alt"></i> Login
-            </a>
-            <a href="{{ url_for('auth.signup') }}" class="btn-signup">
-                <i class="fas fa-user-plus"></i> Sign Up
-            </a>
-        {% endif %}
-    </div>
-   </div>
 
+        <!-- User Auth -->
+        <div class="nav-auth">
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('user_mng.profile') }}" class="user-name-link">
+                    <span class="user-name">{{ session.get('user_name') }}</span>
+                </a>
+                <form method="POST" action="{{ url_for('auth.logout') }}" style="display: inline;">
+                    <button type="submit" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="{{ url_for('auth.signup') }}" class="btn-signup">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            {% endif %}
+        </div>
+    </div>
 </nav>

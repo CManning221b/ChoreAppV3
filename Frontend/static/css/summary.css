@@ -1,0 +1,157 @@
+/* Frontend/static/css/summary.css */
+
+.summary {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 50%, #43cea2 100%);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.summary h2 {
+    text-align: center;
+    color: white;
+    margin-top: 0;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.summary h3 {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.summary h4 {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #764ba2;
+    margin-bottom: 10px;
+}
+
+/* Each section card */
+.summary-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.summary-section p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.summary-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-section ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 15px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.summary-section ul li:last-child {
+    border-bottom: none;
+}
+
+/* Per-user chore blocks */
+.user-chores {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.user-chores:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.user-chores strong {
+    display: block;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.user-chores p {
+    font-size: 14px;
+    color: #999;
+    margin: 0;
+}
+
+/* Status badges */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+}
+
+.badge.overdue {
+    background-color: #ffe0e0;
+    color: #d93025;
+}
+
+.badge.pending {
+    background-color: #f0eeff;
+    color: #667eea;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .summary {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .summary h2 {
+        font-size: 22px;
+    }
+
+    .summary h3 {
+        font-size: 16px;
+    }
+
+    .summary-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary h2 {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .summary h3 {
+        font-size: 14px;
+    }
+
+    .badge {
+        display: block;
+        margin-left: 0;
+        margin-top: 4px;
+        width: fit-content;
+    }
+}

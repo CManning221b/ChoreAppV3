@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block title %} Chore History {% endblock %}
+
+{% block content %}
+{% if history_data %}
+    {% include 'chores/chores_history_widget.html' %}
+{% else %}
+    <h1> No Chore History </h1>
+{% endif %}
+{% endblock %}

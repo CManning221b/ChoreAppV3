@@ -45,8 +45,8 @@
     "difficulty": 5,
     "location": "Downstairs",
     "required_properties": [
-      "can_lift_hoover",
-      "is_not_parent"
+      "is_not_parent",
+      "can_lift_hoover"
     ],
     "recurrence_interval": "daily"
   },
@@ -76,8 +76,8 @@
     "difficulty": 5,
     "location": "Bathrooms",
     "required_properties": [
-      "comfortable_with_bleach",
-      "is_not_parent"
+      "is_not_parent",
+      "comfortable_with_bleach"
     ],
     "recurrence_interval": "weekly"
   },

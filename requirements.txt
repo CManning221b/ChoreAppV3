@@ -1,0 +1,9 @@
+Flask
+Werkzeug
+networkx
+matplotlib
+numpy
+Flask-Mail
+premailer
+python-dotenv
+APScheduler

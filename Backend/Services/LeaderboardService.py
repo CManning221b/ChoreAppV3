@@ -17,7 +17,7 @@ class LeaderboardService:
 
     def get_leaderboard(self):
         """Return sorted list of users by points (descending)"""
-        users = list(self.manager.users.values())
+        users = [u for u in self.manager.users.values() if u.properties.get('is_not_parent')]
         sorted_users = sorted(users, key=lambda u: u.points, reverse=True)
 
         leaderboard = []

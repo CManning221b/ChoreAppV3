@@ -13,3 +13,8 @@ chores_bp = Blueprint('chores', __name__, url_prefix='/chores')
 def get_chores_rt():
     chores_data = current_app.choreService.get_all_chores_instances()
     return render_template('chores/chores_page.html', chores_data=chores_data)
+
+@chores_bp.route('/history', methods=['GET'])
+def get_chores_history_rt():
+    history_data = current_app.choreService.get_chore_history(limit=100)
+    return render_template('chores/chores_history_page.html', history_data=history_data)

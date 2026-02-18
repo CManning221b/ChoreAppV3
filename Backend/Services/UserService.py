@@ -34,8 +34,9 @@ class UserService:
 
         user = User.create_new(name, email, password, properties)
         self.manager.users[user.id] = user
-        self.manager.save_data()
         self.manager.instances = {}
+        self.manager.save_data()
+        self.manager.load_data()
         self.manager.reassign_all_chores()
         return user
 
@@ -72,19 +73,18 @@ class UserService:
         if not user:
             raise ValueError(f"User {user_id} not found")
 
-        # Get both pending AND completed instances
         user_instances = [inst for inst in self.manager.instances.values()
                           if inst.assigned_to == user_id]
 
-        # Enrich with chore details
         chores_with_details = []
+        needs_save = False
+
         for instance in user_instances:
             chore = self.manager.chores[instance.chore_id]
 
-            # Determine status: overdue if pending and past due date
-            status = instance.status.value
             if instance.status == ChoreStatus.PENDING and instance.due_date < date.today():
-                status = ChoreStatus.OVERDUE.value
+                instance.status = ChoreStatus.OVERDUE
+                needs_save = True
 
             chores_with_details.append({
                 'instance_id': instance.id,
@@ -92,8 +92,12 @@ class UserService:
                 'label': chore.label,
                 'difficulty': chore.difficulty,
                 'location': chore.location,
-                'due_date': instance.due_date.isoformat(),
-                'status': status
+                'due_date': instance.due_date.strftime('%d/%m/%Y'),  # Format here
+                'status': instance.status.value
             })
+
+        if needs_save:
+            self.manager.save_data()
+
         self.manager.reassign_all_chores()
         return chores_with_details

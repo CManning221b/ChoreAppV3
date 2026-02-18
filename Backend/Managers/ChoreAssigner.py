@@ -11,15 +11,39 @@ from Backend.Managers.Chore import Chore, RecurrenceInterval
 from Backend.Managers.User import User
 
 import random
+import json
 
 class ChoreAssigner:
     """Handles auto-assignment logic"""
 
-    def __init__(self, users, chores, instances):
-        self.users = users  # dict of {user_id: User}
-        self.chores = chores  # dict of {chore_id: Chore}
-        self.instances = instances  # dict of {instance_id: ChoreInstance}
-        self.recent_history = {}  # {chore_id: user_id} - who was most recently assigned
+    def __init__(self, users, chores, instances, recently_assigned_file_path):
+        self.users = users
+        self.chores = chores
+        self.instances = instances
+        self.recently_assigned_file_path = recently_assigned_file_path
+        self.recent_history = {}
+        self._load_recent_history()
+
+    def _load_recent_history(self):
+        """Load recent history from file"""
+        try:
+            with open(self.recently_assigned_file_path) as f:
+                content = f.read().strip()
+                self.recent_history = json.loads(content) if content else {}
+        except FileNotFoundError:
+            self.recent_history = {}
+
+    def _save_recent_history(self):
+        """Save recent history to file"""
+        with open(self.recently_assigned_file_path, 'w') as f:
+            json.dump(self.recent_history, f, indent=2)
+
+    def _update_recent_history(self):
+        """Rebuild recent_history dict from current instances and save to file"""
+        self.recent_history = {}
+        for instance in self.instances.values():
+            self.recent_history[instance.chore_id] = instance.assigned_to
+        self._save_recent_history()
 
     def assign_chore(self, chore_id, user_id=None):
         """Assign a chore. If user_id is None, auto-pick best candidate."""
@@ -40,36 +64,33 @@ class ChoreAssigner:
             due_date=due_date
         )
         self.instances[instance.id] = instance
+
+        # Update recent history
+        self.recent_history[chore_id] = user.id
+        self._save_recent_history()
+
         return instance
 
     def delete_instance(self, instance_id):
         """Remove a chore instance"""
         del self.instances[instance_id]
 
-    def _update_recent_history(self):
-        """Build recent_history dict from current instances"""
-        self.recent_history = {}
-        for instance in self.instances.values():
-            self.recent_history[instance.chore_id] = instance.assigned_to
 
     def _get_chores_without_instances(self):
-        """Return list of chore IDs that don't have pending instances"""
-        chores_with_instances = set(inst.chore_id for inst in self.instances.values()
-                                    if inst.status == ChoreStatus.PENDING)
+        chores_with_any_instance = set(inst.chore_id for inst in self.instances.values())
+
         return [chore_id for chore_id in self.chores.keys()
-                if chore_id not in chores_with_instances]
+                if chore_id not in chores_with_any_instance]
 
     def assign_all_chores(self):
         """Clean up completed/overdue instances, then assign all chores without instances"""
         today = datetime.now().date()
 
-        # Update history BEFORE deleting completed instances
         self._update_recent_history()
 
-        # Remove completed or overdue instances
         instances_to_delete = [
             inst_id for inst_id, inst in self.instances.items()
-            if (inst.status == ChoreStatus.COMPLETE and inst.due_date < today)
+            if (inst.status == ChoreStatus.COMPLETE and inst.due_date <= today)
         ]
 
         for inst_id in instances_to_delete:
@@ -109,9 +130,8 @@ class ChoreAssigner:
     def _calculate_due_date(self, chore):
         """Calculate due date based on recurrence interval"""
         today = datetime.now().date()
-
         if chore.recurrence_interval == RecurrenceInterval.DAILY:
-            return today + timedelta(days=1)
+            return today
         elif chore.recurrence_interval == RecurrenceInterval.WEEKLY:
             return today + timedelta(weeks=1)
         elif chore.recurrence_interval == RecurrenceInterval.MONTHLY:

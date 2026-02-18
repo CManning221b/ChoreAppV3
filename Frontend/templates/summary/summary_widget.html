@@ -1,0 +1,66 @@
+<div class="summary">
+    <h2>Family Summary</h2>
+    <h3>Here's how Team Manning is getting on today</h3>
+
+    <!-- Leader -->
+    <div class="summary-section">
+        <h4>Currently Leading</h4>
+        {% if summary.leader %}
+            <p><strong>{{ summary.leader.name }}</strong> is out in front with <strong>{{ summary.leader.points }}</strong> points this month.</p>
+        {% else %}
+            <p>No one's on the board yet — get going!</p>
+        {% endif %}
+    </div>
+
+    <!-- Most Overdue -->
+    <div class="summary-section">
+        <h4>Needs to Pull Their Weight</h4>
+        {% if summary.most_overdue %}
+            <p><strong>{{ summary.most_overdue.name }}</strong> has <strong>{{ summary.most_overdue.overdue_count }}</strong> overdue
+            {{ 'chore' if summary.most_overdue.overdue_count == 1 else 'chores' }} — time to get moving!</p>
+        {% else %}
+            <p>Nobody is overdue right now. Brilliant!</p>
+        {% endif %}
+    </div>
+
+    <!-- Current Chores -->
+    <div class="summary-section">
+        <h4> What Everyone's Got On</h4>
+        {% for user_id, data in summary.current_chores.items() %}
+            <div class="user-chores">
+                <strong>{{ data.name }}</strong>
+                {% if data.chores %}
+                    <ul>
+                        {% for chore in data.chores %}
+                            <li>
+                                {{ chore.label }} — due {{ chore.due_date }}
+                                {% if chore.status == 'overdue' %}
+                                    <span class="badge overdue">Overdue</span>
+                                {% else %}
+                                    <span class="badge pending">Pending</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Nothing on at the moment — lucky them!</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Completed Last 24h -->
+    <div class="summary-section">
+        <h4>Completed in the Last 24 Hours</h4>
+        {% if summary.completed_last_24h %}
+            <ul>
+                {% for entry in summary.completed_last_24h %}
+                    <li><strong>{{ entry.user_name }}</strong> completed <strong>{{ entry.chore_name }}</strong> at {{ entry.timestamp }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nothing completed recently — chop chop!</p>
+        {% endif %}
+    </div>
+
+</div>

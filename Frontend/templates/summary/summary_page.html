@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/summary.css') }}">
+{% endblock %}
+{% block title %} Daily Summary {% endblock %}
+
+{% block content %}
+{% if summary %}
+    {% include 'summary/summary_widget.html' %}
+{% else %}
+    <h1>No summary available</h1>
+{% endif %}
+{% endblock %}

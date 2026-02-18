@@ -199,3 +199,17 @@ class ChoreService:
             },
             'instances': instances_data
         }
+
+    def get_chore_history(self, limit=50):
+        """Get recent chore completions"""
+        # Return most recent first
+        history = sorted(self.manager.chore_history,
+                         key=lambda h: h.timestamp,
+                         reverse=True)[:limit]
+
+        return [{
+            'user_name': entry.user_name,
+            'chore_name': entry.chore_name,
+            'timestamp': entry.timestamp.isoformat(),
+            'date': entry.timestamp.strftime('%d/%m/%Y %H:%M')
+        } for entry in history]

@@ -1,73 +1,10 @@
 [
   {
-    "id": "c72f53c0-f737-4a1a-9b8f-710fb3fed3ff",
-    "chore_id": "4af8b676-3052-4865-aeed-6b66ba3c0533",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-09",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "d62ca534-315b-42e0-bc7d-a6e707cbc24b",
-    "chore_id": "728e2d9a-aba4-49b3-89bc-38de83f8da60",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-09",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "bdc1a913-6962-4812-b3bc-17f74143dc98",
-    "chore_id": "2411c16e-29b0-429f-9e04-76aff874195b",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-09",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "462f56ac-6398-4a9c-994f-d968ebe5f065",
-    "chore_id": "c0716c8b-beef-44f1-8fec-67c81e27359c",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-09",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "b84b93a9-33b8-4804-bbac-3d1fe9adf6a0",
-    "chore_id": "ed449504-2e5a-4b64-b216-32822d7e3f45",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-09",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "a30ef926-34a0-4ced-ae33-d849108c6929",
-    "chore_id": "e62b738c-7cca-479b-a299-166400ab5527",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-15",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
-    "id": "653cf25e-5977-444e-a842-49c22f7c0b1d",
-    "chore_id": "1e2eee4c-1a11-4516-af75-322a4fc18597",
-    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
-    "due_date": "2026-02-15",
-    "status": "pending",
-    "completed_date": null,
-    "points_awarded": 0
-  },
-  {
     "id": "a702d796-7a88-423f-a48a-0b1a993bcccf",
     "chore_id": "0e91b9c8-06c1-471f-b0b7-15a67980d460",
     "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
     "due_date": "2026-02-15",
-    "status": "pending",
+    "status": "overdue",
     "completed_date": null,
     "points_awarded": 0
   },
@@ -76,6 +13,96 @@
     "chore_id": "fb4c9cd9-051e-4ed1-a211-dfb1016b115e",
     "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
     "due_date": "2026-02-09",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "6dc7ce43-4a40-4179-8618-2795601d0be6",
+    "chore_id": "4af8b676-3052-4865-aeed-6b66ba3c0533",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-09",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "54df4f6d-d1e0-4177-92e7-f66bb7f589e2",
+    "chore_id": "728e2d9a-aba4-49b3-89bc-38de83f8da60",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-09",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "29630f6f-d96e-4d05-8627-2ab303fd38b1",
+    "chore_id": "4af8b676-3052-4865-aeed-6b66ba3c0533",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "ce3a5c4c-9fb5-40d2-adaa-9c5199bcb7d1",
+    "chore_id": "728e2d9a-aba4-49b3-89bc-38de83f8da60",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "989c3b49-55db-4975-b658-1dc6ae7aa80e",
+    "chore_id": "2411c16e-29b0-429f-9e04-76aff874195b",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "fef96781-3e0f-406e-8683-2a51df045ac6",
+    "chore_id": "c0716c8b-beef-44f1-8fec-67c81e27359c",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "e250a1a5-3ea8-4620-a3b2-5e98c8eaff8f",
+    "chore_id": "ed449504-2e5a-4b64-b216-32822d7e3f45",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "97e56eeb-d5a9-4ba9-9080-54e024ac66e6",
+    "chore_id": "fb4c9cd9-051e-4ed1-a211-dfb1016b115e",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-11",
+    "status": "overdue",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "40b63093-9ab0-4920-a33b-77ad993a4eda",
+    "chore_id": "e62b738c-7cca-479b-a299-166400ab5527",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-24",
+    "status": "pending",
+    "completed_date": null,
+    "points_awarded": 0
+  },
+  {
+    "id": "8ec70af4-eb05-4c7c-ac6c-957613885ab8",
+    "chore_id": "1e2eee4c-1a11-4516-af75-322a4fc18597",
+    "assigned_to": "303d4689-cc9f-4f60-a9bb-795f6190bac2",
+    "due_date": "2026-02-24",
     "status": "pending",
     "completed_date": null,
     "points_awarded": 0

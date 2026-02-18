@@ -11,20 +11,24 @@ from Backend.Managers.ChoreAssigner import ChoreAssigner
 from Backend.Managers.User import User
 from Backend.Managers.Chore import Chore, RecurrenceInterval
 from Backend.Managers.ChoreInstance import ChoreInstance, ChoreStatus
+from Backend.Managers.ChoreHistory import ChoreHistoryEntry
 
 POINTSVALUE = 10
 
 class ChoreManager:
     """Main orchestrator - handles persistence, state, operations"""
 
-    def __init__(self, users_file='users.json', chores_file='chores.json', instances_file='instances.json'):
+    def __init__(self, users_file='users.json', chores_file='chores.json', instances_file='instances.json', history_file = 'history.json', recently_assigned_file = 'recentlyAssigned.json'):
         self.users_file = users_file
         self.chores_file = chores_file
         self.instances_file = instances_file
+        self.history_file = history_file
+        self.recently_assigned_file = recently_assigned_file
 
         self.users = {}
         self.chores = {}
         self.instances = {}
+        self.chore_histroy = []
         self.assigner = None
 
         self.load_data()
@@ -55,7 +59,15 @@ class ChoreManager:
         except FileNotFoundError:
             self.instances = {}
 
-        self.assigner = ChoreAssigner(self.users, self.chores, self.instances)
+        try:
+            with open(self.history_file) as f:
+                content = f.read().strip()
+                history_data = json.loads(content) if content else []
+                self.chore_history = [ChoreHistoryEntry.from_dict(h) for h in history_data]
+        except FileNotFoundError:
+            self.chore_history = []
+
+        self.assigner = ChoreAssigner(self.users, self.chores, self.instances, self.recently_assigned_file)
 
     def save_data(self):
         """Write to three separate JSON files"""
@@ -68,6 +80,9 @@ class ChoreManager:
         with open(self.instances_file, 'w') as f:
             json.dump([i.to_dict() for i in self.instances.values()], f, indent=2)
 
+        with open(self.history_file, 'w') as f:
+            json.dump([h.to_dict() for h in self.chore_history], f, indent=2)
+
     def complete_chore(self, instance_id):
         """Mark instance as done, award points, reassign recurring chores"""
         instance = self.instances[instance_id]
@@ -77,6 +92,15 @@ class ChoreManager:
         instance.status = ChoreStatus.COMPLETE
         instance.completed_date = datetime.now().date()
         user.points += chore.difficulty * POINTSVALUE
+
+        # Log the completion
+        entry = ChoreHistoryEntry(
+            user_id=user.id,
+            user_name=user.name,
+            chore_id=chore.id,
+            chore_name=chore.label
+        )
+        self.chore_history.append(entry)
 
         self.reassign_all_chores()
 
@@ -111,7 +135,7 @@ class ChoreManager:
     def reassign_all_chores(self):
         """Reassign all chores (cleanup + assign new)"""
         self.reset_points_if_month_start()
+        self.assigner._update_recent_history()  # Ensure history is current
         self.assigner.assign_all_chores()
         self.save_data()
-
 

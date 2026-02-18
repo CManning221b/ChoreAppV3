@@ -38,7 +38,7 @@ def logout():
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        return render_template('auth/signup.html')
+        return render_template('auth/signUp.html')
 
     # POST - handle form submission
     name = request.form.get('name')
@@ -62,4 +62,4 @@ def signup():
         )
         return redirect(url_for('auth.login'))
     except ValueError as e:
-        return render_template('auth/signup.html', error=str(e))
+        return render_template('auth/signUp.html', error=str(e))

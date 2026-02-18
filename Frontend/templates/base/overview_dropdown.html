@@ -1,0 +1,19 @@
+<div class="nav-dropdown">
+    <a href="#" class="dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('active')">
+        <i class="fas fa-chart-bar"></i> Overview
+    </a>
+    <div class="dropdown-menu">
+        <a href="{{ url_for('leaderboard.get_leaderboard_rt') }}" class="{{ 'active' if request.endpoint == 'leaderboard.get_leaderboard_rt' else '' }}">
+            <i class="fas fa-trophy"></i> Leaderboard
+        </a>
+        <a href="{{ url_for('chores.get_chores_rt') }}" class="{{ 'active' if request.endpoint == 'chores.get_chores_rt' else '' }}">
+            <i class="fas fa-list"></i> All Chores
+        </a>
+        <a href="{{ url_for('chores.get_chores_history_rt') }}" class="{{ 'active' if request.endpoint == 'chores.get_chores_history_rt' else '' }}">
+            <i class="fas fa-history"></i> History
+        </a>
+        <a href="{{ url_for('summary.get_summary_rt') }}" class="{{ 'active' if request.endpoint == 'summary.get_summary_rt' else '' }}">
+            <i class="fas fa-clipboard"></i> Summary
+        </a>
+    </div>
+</div>

@@ -55,7 +55,7 @@ function deleteInstance(instanceId) {
     if (confirm('Are you sure you want to delete this instance?')) {
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '{{ url_for("admin.delete_chore_instance_admin", instance_id="") }}' + instanceId;
+        form.action = `/admin/instances/${instanceId}/delete`;
         document.body.appendChild(form);
         form.submit();
     }
