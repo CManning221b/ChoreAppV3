@@ -45,8 +45,8 @@
     "difficulty": 5,
     "location": "Downstairs",
     "required_properties": [
-      "is_not_parent",
-      "can_lift_hoover"
+      "can_lift_hoover",
+      "is_not_parent"
     ],
     "recurrence_interval": "daily"
   },
@@ -87,8 +87,8 @@
     "difficulty": 4,
     "location": "Local area",
     "required_properties": [
-      "can_walk_dog",
-      "is_not_parent"
+      "is_not_parent",
+      "can_walk_dog"
     ],
     "recurrence_interval": "daily"
   }
